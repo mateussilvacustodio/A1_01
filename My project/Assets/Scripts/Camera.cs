@@ -7,12 +7,6 @@ public class Camera : MonoBehaviour
     
     [SerializeField] Transform characterTransform;
     
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         

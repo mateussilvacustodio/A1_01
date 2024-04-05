@@ -17,4 +17,14 @@ public class Movimentacao : MonoBehaviour
         transform.Rotate(0, 0, -virar);
 
     }
+
+    public void OnCollisionEnter2D(Collision2D collision) {
+
+        if(collision.gameObject.tag == "Parede") {
+
+            GetComponent<AudioSource>().Play();
+
+        }
+
+    }
 }
