@@ -23,6 +23,7 @@ public class Movimentacao : MonoBehaviour
         if(collision.gameObject.tag == "Parede") {
 
             GetComponent<AudioSource>().Play();
+            Debug.Log("Lalas");
 
         }
 
