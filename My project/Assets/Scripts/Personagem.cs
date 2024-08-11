@@ -15,11 +15,8 @@ public class Personagem : MonoBehaviour
     [SerializeField] GameObject barraVerde;
     [SerializeField] GameObject barraVermelha;
     [SerializeField] GameController gameController;
-    [SerializeField] float mudadorDinheiro;
-    [SerializeField] float mudadorImplantes;
-    
-    float controleAleatoriedade;
-
+    public float mudadorDinheiro;
+    public float mudadorImplantes;
     void Start()
     {
         
@@ -35,22 +32,23 @@ public class Personagem : MonoBehaviour
         
         if(barraVerde != null) {
 
-            gameController.ValorDinheiro += mudadorDinheiro;
+            gameController.LerpadorDeVida(mudadorDinheiro);
 
         }
 
         if(barraVermelha != null) {
 
-            gameController.ValorImplantes += mudadorImplantes;
+            gameController.LerpadorDeImplantes(mudadorImplantes);
 
         }
 
-        controleAleatoriedade = gameController.personagemIndex;
-        while(controleAleatoriedade == gameController.personagemIndex) {
+        gameController.controleAleatoriedade = gameController.personagemIndex;
+        while(gameController.controleAleatoriedade == gameController.personagemIndex) {
 
             gameController.personagemIndex = Random.Range(0,3);
 
         }
+
         gameController.falaNoBalao.text = gameController.personagem[gameController.personagemIndex].GetComponent<Personagem>().pedido;
         gameController.nome.text = gameController.personagem[gameController.personagemIndex].name;
         gameController.textoBotaoConfirmacao.text = gameController.personagem[gameController.personagemIndex].GetComponent<Personagem>().opcao1;
@@ -66,23 +64,23 @@ public class Personagem : MonoBehaviour
 
         if(barraVerde != null) {
 
-            gameController.ValorDinheiro -= mudadorDinheiro;
+            gameController.LerpadorDeVida(-mudadorDinheiro);
 
         }
 
         if(barraVermelha != null) {
 
-            gameController.ValorImplantes -= mudadorImplantes;
+            gameController.LerpadorDeImplantes(-mudadorImplantes);
 
         }
         
-        controleAleatoriedade = gameController.personagemIndex;
-        while(controleAleatoriedade == gameController.personagemIndex) {
+        gameController.controleAleatoriedade = gameController.personagemIndex;
+        while(gameController.controleAleatoriedade == gameController.personagemIndex) {
 
             gameController.personagemIndex = Random.Range(0,3);
 
         }
-        gameController.personagemIndex = Random.Range(0,3);
+
         gameController.falaNoBalao.text = gameController.personagem[gameController.personagemIndex].GetComponent<Personagem>().pedido;
         gameController.nome.text = gameController.personagem[gameController.personagemIndex].name;
         gameController.textoBotaoConfirmacao.text = gameController.personagem[gameController.personagemIndex].GetComponent<Personagem>().opcao1;

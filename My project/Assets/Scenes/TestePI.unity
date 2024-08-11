@@ -366,6 +366,9 @@ MonoBehaviour:
   textoBotaoConfirmacao: {fileID: 1064259318}
   botaoNegacao: {fileID: 1731259126}
   textoBotaoNegacao: {fileID: 2072148349}
+  tempoLerp: 0
+  duracaoLerp: 0.75
+  controleAleatoriedade: 1
 --- !u!4 &766000938
 Transform:
   m_ObjectHideFlags: 0
