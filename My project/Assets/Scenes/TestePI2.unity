@@ -220,12 +220,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956f14c7303790c4aa8d57fd2b2d0726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pedido: 
-  opcao1: 
-  opcao2: 
-  dinheiro: {fileID: 0}
+  pedido: Quer mudar o dinheiro?
+  opcao1: Aumente o dinheiro
+  opcao2: Diminua o dinheiro
+  dinheiro: {fileID: 1549724243}
   ponteiro: {fileID: 0}
   gameControl2: {fileID: 766000939}
+  quantidadeRotacao: 0
+  quantidadeDinheiro: 10
 --- !u!1 &376553954
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,8 +262,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 177.3, y: -100.77}
-  m_SizeDelta: {x: 120.97, y: 7.37}
+  m_AnchoredPosition: {x: 177.3, y: -101.95}
+  m_SizeDelta: {x: 68.88, y: 5.02}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &376553956
 MonoBehaviour:
@@ -437,9 +439,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3939e44284f9fa74c943718b051d8fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dinheiro: 0
+  dinheiro: 100
   ponteiroTransform: {fileID: 376553955}
-  anguloPonteiro: 90
+  velocidadeRotacao: 25
+  ponteiroEstaRodando: 0
+  quantidadePedidos: 0
+  dia: 1
   personagens:
   - {fileID: 1760941100}
   - {fileID: 141748366}
@@ -447,12 +452,15 @@ MonoBehaviour:
   personagemIndex: 0
   balaoTexto: {fileID: 935196493}
   dinheiroTexto: {fileID: 1549724243}
+  diaTexto: {fileID: 1723055771}
+  nomeBalao: {fileID: 856098852}
   botaoConfirmacaoTexto: {fileID: 1064259318}
   botaoConfirmacao: {fileID: 1624448080}
   botaoNegacaoTexto: {fileID: 2072148349}
   botaoNegacao: {fileID: 1731259128}
   lerp: 0
-  duracaoLerp: 0.25
+  duracaoLerp: 0.5
+  controleAleatoriedade: 0
 --- !u!1 &856098850
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,12 +915,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956f14c7303790c4aa8d57fd2b2d0726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pedido: 
-  opcao1: 
-  opcao2: 
-  dinheiro: {fileID: 0}
-  ponteiro: {fileID: 0}
+  pedido: Quer mudar os dois
+  opcao1: Mais dinheiro e menos reputacao
+  opcao2: Menos dinheiro e mais reputacao
+  dinheiro: {fileID: 1549724243}
+  ponteiro: {fileID: 376553954}
   gameControl2: {fileID: 766000939}
+  quantidadeRotacao: 10
+  quantidadeDinheiro: 10
 --- !u!1 &1454269235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,7 +1285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1629536007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1360,6 +1370,85 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1723055769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1723055770}
+  - component: {fileID: 1723055772}
+  - component: {fileID: 1723055771}
+  m_Layer: 5
+  m_Name: Dia
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1723055770
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723055769}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2130467427}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 318, y: -124}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1723055771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723055769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 24
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Dia 1
+--- !u!222 &1723055772
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723055769}
+  m_CullTransparentMesh: 1
 --- !u!1 &1731259126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,12 +1667,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956f14c7303790c4aa8d57fd2b2d0726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pedido: Teste1
-  opcao1: Sim
-  opcao2: "N\xE3o"
-  dinheiro: {fileID: 1549724243}
+  pedido: Quer mudar apenas o ponteiro?
+  opcao1: Mude o ponteiro para esquerda
+  opcao2: Mude para a direita
+  dinheiro: {fileID: 0}
   ponteiro: {fileID: 376553954}
   gameControl2: {fileID: 766000939}
+  quantidadeRotacao: 10
+  quantidadeDinheiro: 10
 --- !u!1 &2072148347
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,6 +1853,7 @@ RectTransform:
   - {fileID: 1586511458}
   - {fileID: 376553955}
   - {fileID: 1549724242}
+  - {fileID: 1723055770}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
